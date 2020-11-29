@@ -17,9 +17,10 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col">
-                <!-- Форма авторизации -->
-                <h2>Форма авторизации</h2>
-                <form name="form-login" id="form-login" method="post">
+                <!-- Форма регистрации -->
+                <h2>Форма регистрации</h2>
+                <form name="form-signin" id="form-signin" method="post">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Введите имя" required><br>
                     <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин" required><br>
                     <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль" required><br>
                     <?php if (!empty($pageData['error'])) : ?>
@@ -28,7 +29,7 @@
                     <button class="btn btn-success" type="submit">Войти</button>
                 </form>
                 <br>
-                <p>Если вы еще не зарегистрированы, тогда нажмите <a href="/register">здесь</a>.</p>
+                <p>Если вы зарегистрированы, тогда нажмите <a href="/">здесь</a>.</p>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@
 class DB
 {
     const USER = "root";
-    const PASS = "";
+    const PASS = "root";
     const HOST = "localhost";
     const DB = "alchanov";
 
