@@ -17,7 +17,6 @@ class DB
         $host = self::HOST;
         $db = self::DB;
 
-        $conn = new PDO("mysql:dbname=$db;host=$host", $user, $pass);
-        return $conn;
+        return new PDO("mysql:dbname=$db;host=$host", $user, $pass);
     }
 }

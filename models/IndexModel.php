@@ -9,7 +9,7 @@ class IndexModel extends Model
         $login = $_POST['login'];
         $password = md5($_POST['password']);
 
-        $sql = "SELECT * FROM users WHERE login = :login AND password = :password";
+        $sql = "SELECT * FROM `authors` WHERE login = :login AND password = :password AND rights = 'a'";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
@@ -22,7 +22,7 @@ class IndexModel extends Model
 
         if (!empty($res)) {
             $_SESSION['user'] = $_POST['login'];
-            header("Location: /cabinet");
+            header("Location: /admin");
         } else {
             return false;
         }

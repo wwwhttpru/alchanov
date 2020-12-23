@@ -8,6 +8,7 @@ class IndexController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
         $this->model = new IndexModel();
         $this->view = new View();
     }
@@ -16,7 +17,7 @@ class IndexController extends Controller
     public function index()
     {
         if (($_SESSION['user'])) {
-            header("Location: /cabinet");
+            header("Location: /admin");
         } else {
             $this->pageData['title'] = "Вход в личный кабинет";
             if (!empty($_POST)) {
@@ -35,5 +36,6 @@ class IndexController extends Controller
         if (!$this->model->checkUser()) {
             return false;
         }
+        return true;
     }
 }

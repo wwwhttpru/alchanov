@@ -5,16 +5,15 @@ class RegisterModel extends Model
 
     public function registerUser()
     {
-        $name = $_POST['name'];
+
         $login = $_POST['login'];
         $password = md5($_POST['password']);
 
-        $sql = "INSERT INTO  `users` (`id` ,`name` ,`login` ,`password`)
+        $sql = "INSERT INTO  `authors` (`id` ,`login` ,`password` , `rights`)
                         VALUES (
-                        NULL, :name, :login, :password);";
+                        NULL, :login, :password, 'u');";
 
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
         $stmt->bindValue(":password", $password, PDO::PARAM_STR);
         $stmt->execute();

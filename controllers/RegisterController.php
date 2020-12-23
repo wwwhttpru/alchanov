@@ -7,6 +7,7 @@ class RegisterController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
         $this->model = new RegisterModel();
         $this->view = new View();
     }
@@ -14,7 +15,7 @@ class RegisterController extends Controller
     public function index()
     {
         if (($_SESSION['user'])) {
-            header("Location: /cabinet");
+            header("Location: /admin");
         } else {
             $this->pageData['title'] = "Регистрация";
             if (!empty($_POST)) {
@@ -33,5 +34,6 @@ class RegisterController extends Controller
         if (!$this->model->registerUser()) {
             return false;
         }
+        return true;
     }
 }

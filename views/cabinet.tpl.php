@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
-    <title><?php echo $pageData['title']; ?></title>
-    <meta name="vieport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>
+        <?php
+        if (!empty($pageData['title'])) : ?>
+            <?php echo $pageData['title']; ?>
+        <?php endif; ?>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>

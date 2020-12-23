@@ -1,47 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <title><?php echo $pageData['title']; ?></title>
-    <meta name="vieport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <title>
+        <?php
+        if (!empty($pageData['title'])) : ?>
+            <?php echo $pageData['title']; ?>
+        <?php endif; ?>
+    </title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="bg-gradient-primary">
 
-    <header></header>
+<div class="container">
 
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col">
-                <!-- Форма регистрации -->
-                <h2>Форма регистрации</h2>
-                <form name="form-signin" id="form-signin" method="post">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Введите имя" required><br>
-                    <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин" required><br>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль" required><br>
-                    <?php if (!empty($pageData['error'])) : ?>
-                        <p><?php echo $pageData['error']; ?></p>
-                    <?php endif; ?>
-                    <button class="btn btn-success" type="submit">Войти</button>
-                </form>
-                <br>
-                <p>Если вы зарегистрированы, тогда нажмите <a href="/">здесь</a>.</p>
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Создайте аккаунт!</h1>
+                        </div>
+
+                        <form class="form-auth" id="form-auth" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="login"
+                                       name="login"
+                                       placeholder="Введите логин" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user"
+                                       name="password"
+                                       id="password" placeholder="Введите пароль" required>
+                            </div>
+                            <button  class="btn btn-primary btn-user btn-block" type="submit">
+                                Создать аккаунт
+                            </button >
+                        </form>
+
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="/">Уже есть аккаунт? Войдите!</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer>
+</div>
 
-    </footer>
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin-2.min.js"></script>
+
+<script src="../js/script.js"></script>
 
 </body>
 

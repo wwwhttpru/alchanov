@@ -1,29 +1,13 @@
 $(document).ready(
     function () {
-        $("#form-login").submit(
+        $("#form-auth").submit(
             function (e) {
                 e.preventDefault();
 
-                var login = $.trim($("#login").val());
-                var password = $.trim($("#password").val());
-                console.log(login, password);
-                if (login != '' && password != '') {
-                    $(this).unbind().submit();
-
-                }
-            }
-        );
-    },
-    function () {
-        $("#form-signin").submit(
-            function (e) {
-                e.preventDefault();
-
-                var name = $.trim($("#name").val());
-                var login = $.trim($("#login").val());
-                var password = $.trim($("#password").val());
-
-                if (login != '' || password != '' || name != '') {
+                let login = $.trim($("#login").val());
+                let password = $.trim($("#password").val());
+                console.log('login, password пробелы');
+                if (login !== '' && password !== '') {
                     $(this).unbind().submit();
                 }
             }
