@@ -29,15 +29,28 @@ class Routing
             }
             $i--;
         }
+
         require_once CONTROLLER_PATH . $controllerName . ".php"; //IndexController.php
         require_once MODEL_PATH . $modelName . ".php"; //IndexModel.php
 
-        $controller = new $controllerName();
-        $controller->$action(); // $contoller->index();
+        if (file_exists(CONTROLLER_PATH . $controllerName . ".php") ||
+            file_exists(MODEL_PATH . $modelName . ".php")
+        ) {
+            $controller = new $controllerName();
+            if (method_exists($controllerName, $action)) {
+                $controller->$action(); // $contoller->index();
+            } else {
+                $controller->index();
+            }
+        } else {
+            Routing::errorPage();
+        }
+
+
     }
 
-    public function errorPage() {
-
+    public static function errorPage() {
+        echo "Ошибка пути!";
     }
 
 }
