@@ -17,6 +17,6 @@ class DB
         $host = self::HOST;
         $db = self::DB;
 
-        return new PDO("mysql:dbname=$db;host=$host", $user, $pass);
+        return new PDO("mysql:dbname=$db;host=$host;charset=UTF8", $user, $pass);
     }
 }
