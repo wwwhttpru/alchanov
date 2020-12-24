@@ -20,8 +20,25 @@ class AdminController extends Controller
         }
         $this->pageData['title'] = "Админ панель";
 
+        $countSuperUsers = $this->model->getCountSuperUsers();
+        $this->pageData['countSuperUsers'] = $countSuperUsers;
+
+        $countUsers = $this->model->getCountUsers();
+        $this->pageData['countUsers'] = $countUsers;
+
+        $notes = $this->model->getCountUsers();
+        $this->pageData['notes'] = $notes;
+
+        $comments = $this->model->getComments();
+        $this->pageData['comments'] = $comments;
 
         $this->view->render($this->pageTpl, $this->pageData);
+    }
+
+    public  function  logout() {
+        session_unset();
+        session_destroy();
+        header("Location: ../");
     }
 
 }

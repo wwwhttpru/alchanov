@@ -22,30 +22,14 @@ include('includes/navbar.php');
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 
-                    <!-- Dropdown - Messages -->
-                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                         aria-labelledby="searchDropdown">
-                        <form class="form-inline mr-auto w-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                       placeholder="Search for..." aria-label="Search"
-                                       aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                        <?php echo $_SESSION['user']; ?>
+                        </span>
                         <img class="img-profile rounded-circle"
                              src="../img/undraw_profile.svg">
                     </a>
@@ -54,7 +38,7 @@ include('includes/navbar.php');
                          aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
+                            Выйти
                         </a>
                     </div>
                 </li>
@@ -82,11 +66,18 @@ include('includes/navbar.php');
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Earnings (Monthly)</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        Администраторы</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <?php
+                                        if (!empty($pageData['countSuperUsers'])) : ?>
+                                            <?php echo $pageData['countSuperUsers']; ?>
+                                        <?php else: ?>
+                                            0
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    <i class="fas fa-user-secret fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -100,11 +91,18 @@ include('includes/navbar.php');
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Earnings (Annual)</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        Пользователи</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <?php
+                                        if (!empty($pageData['countUsers'])) : ?>
+                                            <?php echo $pageData['countUsers']; ?>
+                                        <?php else: ?>
+                                            0
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    <i class="fas fa-users fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -117,23 +115,19 @@ include('includes/navbar.php');
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                    </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                                <div class="progress-bar bg-info" role="progressbar"
-                                                     style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                     aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Заметки</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <?php
+                                        if (!empty($pageData['notes'])) : ?>
+                                            <?php echo $pageData['notes']; ?>
+                                        <?php else: ?>
+                                            0
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    <i class="fas fa-sticky-note fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -147,8 +141,15 @@ include('includes/navbar.php');
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Pending Requests</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        Коментарии</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <?php
+                                        if (!empty($pageData['notes'])) : ?>
+                                            <?php echo $pageData['notes']; ?>
+                                        <?php else: ?>
+                                            0
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-comments fa-2x text-gray-300"></i>
