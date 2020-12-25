@@ -26,7 +26,7 @@ class AdminController extends Controller
         $countUsers = $this->model->getCountUsers();
         $this->pageData['countUsers'] = $countUsers;
 
-        $notes = $this->model->getCountUsers();
+        $notes = $this->model->getNotes();
         $this->pageData['notes'] = $notes;
 
         $comments = $this->model->getComments();

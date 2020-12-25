@@ -28,6 +28,7 @@ class TableController extends Controller
         $users = $this->model->getUsers();
         $this->pageData['data'] = $users;
 
+
         $this->view->render($this->pageTpl, $this->pageData);
     }
 
